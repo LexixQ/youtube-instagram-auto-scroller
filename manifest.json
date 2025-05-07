@@ -1,0 +1,36 @@
+{
+  "manifest_version": 3,
+  "name": "YouTube & Instagram Otomatik Kaydırıcı",
+  "version": "2.0",
+  "description": "YouTube Shorts ve Instagram Reels videoları bittiğinde otomatik olarak bir sonrakine geçer. Tarayıcı ikonu ve YouTube sayfasındaki buton ile kontrol edilir.",
+  "icons": {
+    "16": "icons/icon-16-disabled.png",
+    "32": "icons/icon-32-disabled.png",
+    "48": "icons/icon-48.png",
+    "128": "icons/icon-128.png"
+  },
+  "permissions": [
+    "storage"
+  ],
+  "action": {
+    "default_icon": {
+      "16": "icons/icon-16-disabled.png",
+      "32": "icons/icon-32-disabled.png"
+    },
+    "default_title": "Otomatik Kaydırmayı Aktif Et"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "*://*.youtube.com/shorts/*",
+        "*://www.instagram.com/reels/*",
+        "*://www.instagram.com/*"
+      ],
+      "js": ["content_script.js"],
+      "css": ["styles.css"]
+    }
+  ]
+}
